@@ -9,9 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 460958}
   - 33: {fileID: 3357234}
-  - 65: {fileID: 6577966}
   - 23: {fileID: 2365204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,9 +26,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 402848}
   - 33: {fileID: 3358478}
-  - 65: {fileID: 6508268}
   - 23: {fileID: 2339426}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,9 +43,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 416366}
   - 33: {fileID: 3381012}
-  - 65: {fileID: 6544378}
   - 23: {fileID: 2384456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +59,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 448642}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg (L)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +74,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 470016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +89,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +106,8 @@ GameObject:
   - 4: {fileID: 445550}
   - 136: {fileID: 13623620}
   - 54: {fileID: 5409566}
-  m_Layer: 0
+  - 114: {fileID: 11445128}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,9 +123,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 441918}
   - 33: {fileID: 3350284}
-  - 65: {fileID: 6542926}
   - 23: {fileID: 2393358}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,9 +140,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 435060}
   - 33: {fileID: 3302062}
-  - 65: {fileID: 6570500}
   - 23: {fileID: 2325960}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +156,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +172,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454790}
   - 212: {fileID: 21238664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +187,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +202,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 489336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,9 +218,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 401888}
   - 33: {fileID: 3396512}
-  - 65: {fileID: 6518026}
   - 23: {fileID: 2365326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +234,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434430}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +249,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arm (R)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +264,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 448216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,9 +280,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 433494}
   - 33: {fileID: 3357478}
-  - 65: {fileID: 6555556}
   - 23: {fileID: 2387852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +296,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441636}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arm (L)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,9 +312,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 485978}
   - 33: {fileID: 3356740}
-  - 65: {fileID: 6591466}
   - 23: {fileID: 2360440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,9 +329,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 414772}
   - 33: {fileID: 3358256}
-  - 65: {fileID: 6503258}
   - 23: {fileID: 2363234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +345,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,9 +361,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 463608}
   - 33: {fileID: 3336270}
-  - 65: {fileID: 6506280}
   - 23: {fileID: 2366712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,9 +378,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 405080}
   - 33: {fileID: 3395772}
-  - 65: {fileID: 6554050}
   - 23: {fileID: 2367630}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +394,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg (R)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,9 +410,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 465212}
   - 33: {fileID: 3314398}
-  - 65: {fileID: 6509540}
   - 23: {fileID: 2341656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +578,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 1.071, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1201,152 +1190,24 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &6503258
-BoxCollider:
+--- !u!114 &11445128
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187740}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 153402}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6506280
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193266}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6508268
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114138}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6509540
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198366}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6518026
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164540}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6542926
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158432}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6544378
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117822}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6554050
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194560}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6555556
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183958}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6570500
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6577966
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114118}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6591466
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186048}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a036a94fac451b24c9070c3d4501b594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _walkSpeed: 8
+  _runSpeed: 12
+  _rigidbody: {fileID: 5409566}
+  _bodyCollider: {fileID: 13623620}
+  _camera: {fileID: 0}
 --- !u!136 &13623620
 CapsuleCollider:
   m_ObjectHideFlags: 1
