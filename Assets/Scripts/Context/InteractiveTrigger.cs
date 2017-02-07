@@ -11,9 +11,6 @@ public class InteractiveEvent : UnityEvent<object>
 
 public class InteractiveTrigger : MonoBehaviour
 {
-    // idea:
-    // interactive triggers hold data on what button needs to be pressed, callout text, and the action that needs to happen when that button is pressed
-    
     [System.Serializable]
     public class InteractionInfo
     {
@@ -22,9 +19,22 @@ public class InteractiveTrigger : MonoBehaviour
         public InteractiveEvent Action;
     }
 
-    [SerializeField] private InteractionInfo _info;
+    [SerializeField] protected Button _actionButton;
+    [SerializeField] protected string _calloutText;
+    [SerializeField] protected InteractiveEvent _action;
 
-    public void OnTriggerEnter(Collider other)
+    protected InteractionInfo _info;
+
+    protected virtual void Start()
+    {
+        _info = new InteractionInfo();
+
+        _info.ActionButton = _actionButton;
+        _info.CalloutText = _calloutText;
+        _info.Action = _action;
+    }
+
+    public virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
@@ -36,7 +46,7 @@ public class InteractiveTrigger : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit(Collider other)
+    public virtual void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {

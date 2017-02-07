@@ -5,8 +5,10 @@ using System;
 
 public class Cart : Vehicle
 {
-    //private void Start()
-    //{
-    //    InputController.Instance.SetPlayerControllable(0, this);
-    //}
+    protected override void Start()
+    {
+        base.Start();
+
+        //_passengers = new Player[0];
+    }
 }

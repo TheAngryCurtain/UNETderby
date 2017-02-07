@@ -10,17 +10,22 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
     [SerializeField] protected Axle[] _axles;
     [SerializeField] protected Rigidbody _rigidbody;
     [SerializeField] protected Transform[] _seats;
-    [SerializeField] protected Transform _driverDoorTransform;
     [SerializeField] protected Transform _centerOfMass;
 
     [SerializeField] protected float _driftWheelFriction;
 
-    private Player _passenger;
+    protected Player _driver;
+    //protected Player[] _passengers;
+    //protected int _maxPassengers;
+    //protected int _passengerCount = 0;
+
     private Button _actionButton;
+    private Transform _actionLocation;
     private Axle _currentAxle;
-    
+
     private float _steerValue;
-    private float _throttle;
+    private float _fowardThrottle;
+    private float _reverseThrottle;
     private float _defaultWheelFriction;
 
     private Vector3 _activeWheelPos;
@@ -56,17 +61,20 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
 
     protected virtual void Move(float h, float v)
     {
-        _throttle = h;
+        _fowardThrottle = h;
     }
 
     protected virtual void Brake(float h, float v)
     {
-        _throttle = -h;
+        _reverseThrottle = h;
     }
 
     protected virtual void FixedUpdate()
     {
-        float motor = _maxTorque * _throttle;
+        float forwardMotor = _maxTorque * _fowardThrottle;
+        float reverseMotor = _maxTorque * _reverseThrottle;
+        float deltaMotor = forwardMotor - reverseMotor;
+
         float steering = _maxSteerAngle * _steerValue;
 
         // apply forces to wheels
@@ -81,8 +89,8 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
 
             if (_currentAxle.Motor)
             {
-                _currentAxle.LeftWheelCollider.motorTorque = motor;
-                _currentAxle.RightWheelCollider.motorTorque = motor;
+                _currentAxle.LeftWheelCollider.motorTorque = deltaMotor;
+                _currentAxle.RightWheelCollider.motorTorque = deltaMotor;
             }
 
             // reflect wheel collider movement onto visual wheels
@@ -109,7 +117,7 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
         curve.stiffness = value;
         for (int i = 0; i < _axles.Length; ++i)
         {
-            _currentAxle = _axles[1];
+            _currentAxle = _axles[1]; // just back wheels for now
             _currentAxle.LeftWheelCollider.sidewaysFriction = curve;
             _currentAxle.RightWheelCollider.sidewaysFriction = curve;
         }
@@ -120,19 +128,29 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
     {
         object[] param = (object[])parameters;
         Player p = (Player)param[0];
-        _actionButton = (Button)param[1];
+        InteractiveVehicleTrigger.InteractionVehicleInfo info = (InteractiveVehicleTrigger.InteractionVehicleInfo)param[1];
+        _actionButton = info.ActionButton;
+        _actionLocation = info.ActionLocation;
 
         bool canChangeState = p.TryChangeState(new CharacterState(CharacterState.eState.Driving));
         if (canChangeState)
         {
-            _passenger = p;
-            
-            // align for driving
-            _passenger.transform.SetParent(this.transform);
-            _passenger.transform.position = DriverSeat.position;
-            _passenger.transform.rotation = DriverSeat.rotation;
+            //if (info.IsDriverDoor)
+            //{
+                _driver = p;
+            //}
+            //else
+            //{
+            //    _passengers[_passengerCount] = p;
+            //    _passengerCount += 1;
+            //}
 
-            InputController.Instance.SetPlayerControllable(0, this);
+            // align to seat
+            _driver.transform.SetParent(this.transform);
+            _driver.transform.position = info.ActiveSeat.position;
+            _driver.transform.rotation = info.ActiveSeat.rotation;
+
+            InputController.Instance.SetPlayerControllable(p.ControllerIndex, this);
         }
     }
     #endregion
@@ -142,24 +160,30 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
     {
         if (a == Axis.LStick)
         {
+            // TODO need to check if you're the driving player
+
             // steering
             Steer(h, v);
         }
         else if (a == Axis.RStick)
         {
             // pass on camera
-            if (_passenger != null)
+            if (_driver != null)
             {
-                _passenger.HandleAxis(a, h, v);
+                _driver.HandleAxis(a, h, v);
             }
         }
         else if (a == Axis.RTrigger)
         {
+            // TODO need to check if you're the driving player
+
             // power
             Move(h, v);
         }
         else if (a == Axis.LTrigger)
         {
+            // TODO need to check if you're the driving player
+
             // brake
             Brake(h, v);
         }
@@ -175,15 +199,15 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
         if (b == _actionButton)
         {
             // exit the vehicle
-            bool canChangeState = _passenger.TryChangeState(new CharacterState(CharacterState.eState.Default));
+            bool canChangeState = _driver.TryChangeState(new CharacterState(CharacterState.eState.Default));
             if (canChangeState)
             {
-                _passenger.transform.position = _driverDoorTransform.position + (_driverDoorTransform.up * 0.5f);
-                _passenger.transform.rotation = _driverDoorTransform.rotation;
-                _passenger.transform.SetParent(null);
+                _driver.transform.position = _actionLocation.position + (_actionLocation.up * 0.5f);
+                _driver.transform.rotation = _actionLocation.rotation;
+                _driver.transform.SetParent(null);
 
-                InputController.Instance.SetPlayerControllable(0, _passenger);
-                _passenger = null;
+                InputController.Instance.SetPlayerControllable(0, _driver);
+                _driver = null;
 
                 return;
             }

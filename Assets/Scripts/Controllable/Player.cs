@@ -13,11 +13,15 @@ public class Player : Character
     private Quaternion _targetRotation;
     private Quaternion _newRotation;
 
+    private int _controllerIndex;
+    public int ControllerIndex { get { return _controllerIndex; } }
+
     protected InteractiveTrigger.InteractionInfo _interactiveInfo;
 
     private void Start()
     {
-        InputController.Instance.SetPlayerControllable(0, this);
+        _controllerIndex = 0;
+        InputController.Instance.SetPlayerControllable(_controllerIndex, this);
     }
 
     protected override void Move(float h, float v)
@@ -46,6 +50,13 @@ public class Player : Character
         {
             _camera.HandleAxisInput(h, v);
         }
+    }
+
+    protected override void ChangeState(CharacterState state)
+    {
+        base.ChangeState(state);
+
+        _camera.UpdateFollowState(state.State == CharacterState.eState.Driving);
     }
 
     public void AcceptInteractiveInfo(bool valid, InteractiveTrigger.InteractionInfo info)
@@ -90,7 +101,7 @@ public class Player : Character
                 object parameters = new object[]
                 {
                     this,
-                    _interactiveInfo.ActionButton
+                    _interactiveInfo
                 };
 
                 // update info in state
@@ -110,6 +121,13 @@ public class Player : Character
         if (b == Button.X)
         {
             _currentSpeed = _runSpeed;
+        }
+        else if (b == Button.RStick)
+        {
+            if (_camera != null)
+            {
+                _camera.Recenter();
+            }
         }
     }
 

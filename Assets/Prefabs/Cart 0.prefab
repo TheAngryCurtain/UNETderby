@@ -25,7 +25,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 478698}
   - 65: {fileID: 6522164}
-  - 114: {fileID: 11421152}
+  - 114: {fileID: 11441404}
   m_Layer: 0
   m_Name: Driver (1)
   m_TagString: Untagged
@@ -286,7 +286,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 403532}
   - 65: {fileID: 6505230}
-  - 114: {fileID: 11428584}
+  - 114: {fileID: 11413398}
   m_Layer: 0
   m_Name: Driver
   m_TagString: Untagged
@@ -1066,37 +1066,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11421152
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12e2fdcab636f44a9296ba64c06fc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _info:
-    ActionButton: 3
-    CalloutText: Get In
-    Action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11491990}
-          m_MethodName: InteractAction
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: InteractiveEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
---- !u!114 &11428584
+--- !u!114 &11413398
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1104,28 +1074,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 183100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12e2fdcab636f44a9296ba64c06fc18, type: 3}
+  m_Script: {fileID: 11500000, guid: 134af7c602e6e134eb94654275ac5b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _info:
-    ActionButton: 3
-    CalloutText: Get In
-    Action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11491990}
-          m_MethodName: InteractAction
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: InteractiveEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+  _actionButton: 3
+  _calloutText: Get In
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11491990}
+        m_MethodName: InteractAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: InteractiveEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _actionLocation: {fileID: 403532}
+  _activeSeat: {fileID: 486786}
+  _isDriverDoor: 1
+--- !u!114 &11441404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134af7c602e6e134eb94654275ac5b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionButton: 3
+  _calloutText: Get In
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11491990}
+        m_MethodName: InteractAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: InteractiveEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _actionLocation: {fileID: 478698}
+  _activeSeat: {fileID: 486786}
+  _isDriverDoor: 1
 --- !u!114 &11491990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1155,7 +1159,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 5499576}
   _seats:
   - {fileID: 486786}
-  _driverDoorTransform: {fileID: 403532}
   _centerOfMass: {fileID: 461908}
   _driftWheelFriction: 1.25
 --- !u!146 &14603492

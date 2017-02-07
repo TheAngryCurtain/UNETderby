@@ -10,31 +10,87 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private Transform _camTransform;
     [SerializeField] private Camera _camera;
 
-    [SerializeField] private float _distance;
     [SerializeField] private float _xSensitivity;
     [SerializeField] private float _ySensitivity;
 
     public Transform CameraTransform { get { return _camTransform; } }
 
-    private float currentX = 0f;
-    private float currentY = 0f;
+    private bool _freeCam = false;
+    private bool _shouldFollow = false;
+    private float _currentX = 0f;
+    private float _currentY = 0f;
+
+    private Vector3 _defaultOffset;
+    private float _defaultDistance;
+
+    private void Awake()
+    {
+        _defaultOffset = _camTransform.position - _target.position;
+        _defaultDistance = _defaultOffset.magnitude;
+
+        // intial position
+        _camTransform.position = _target.position + _defaultOffset;
+    }
 
     public void HandleAxisInput(float h, float v)
     {
-        currentX += h * _xSensitivity;
-        currentY += v * _ySensitivity;
+        if (h != 0f || v != 0f)
+        {
+            _currentX += h * _xSensitivity;
+            _currentY += v * _ySensitivity;
 
-        currentY = Mathf.Clamp(currentY, MIN_Y_ANGLE, MAX_Y_ANGLE);
+            _currentY = Mathf.Clamp(_currentY, MIN_Y_ANGLE, MAX_Y_ANGLE);
+
+            _freeCam = true;
+        }
+    }
+
+    public void UpdateFollowState(bool follow)
+    {
+        _shouldFollow = follow;
+    }
+
+    public void Recenter()
+    {
+        _currentX = 0f;
+        _currentY = 0f;
+
+        UpdateFollowOffset();
+
+        _freeCam = false;
+    }
+
+    private void UpdateFollowOffset()
+    {
+        // map camera forward onto target's xz plane
+        Vector3 adjustedCamForward = Vector3.ProjectOnPlane(_camTransform.forward, _target.up);
+        float angle = Utils.GetSignedAngle(adjustedCamForward, _target.forward);
+
+        Debug.Log(angle);
+
+        _defaultOffset = Quaternion.Euler(0f, angle, 0f) * _defaultOffset;
     }
 
     private void LateUpdate()
     {
         if (_target != null)
         {
-            Vector3 dir = new Vector3(0f, 0f, -_distance);
-            Quaternion rotation = Quaternion.Euler(currentY, currentX, 0f);
-            _camTransform.position = _target.position + rotation * dir;
-            _camTransform.LookAt(_target.position);
+            if (_freeCam)
+            {
+                Quaternion rotation = Quaternion.Euler(_currentY, _currentX, _defaultDistance);
+                _camTransform.position = _target.position + rotation * _defaultOffset;
+                _camTransform.LookAt(_target.position);
+            }
+            else
+            {
+                if (_shouldFollow)
+                {
+                    UpdateFollowOffset();
+                }
+
+                _camTransform.position = _target.position + _defaultOffset;
+                _camTransform.LookAt(_target);
+            }
         }
     }
 }

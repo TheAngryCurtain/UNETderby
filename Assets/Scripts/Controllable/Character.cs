@@ -48,7 +48,7 @@ public abstract class Character : MonoBehaviour, IControllable
         return true;
     }
 
-    protected void ChangeState(CharacterState state)
+    protected virtual void ChangeState(CharacterState state)
     {
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.angularVelocity = Vector3.zero;
