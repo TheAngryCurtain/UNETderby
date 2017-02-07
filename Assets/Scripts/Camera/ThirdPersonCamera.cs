@@ -63,8 +63,11 @@ public class ThirdPersonCamera : MonoBehaviour
     private void UpdateFollowOffset()
     {
         // map camera forward onto target's xz plane
-        Vector3 adjustedCamForward = Vector3.ProjectOnPlane(_camTransform.forward, _target.up);
-        float angle = Utils.GetSignedAngle(adjustedCamForward, _target.forward);
+        Vector2 camForward = new Vector2(_camTransform.forward.x, _camTransform.forward.z);
+        Vector2 targetForward = new Vector2(_target.forward.x, _target.forward.z);
+
+        //Vector3 adjustedCamForward = Vector3.ProjectOnPlane(_camTransform.forward, _target.up);
+        float angle = Utils.GetSignedAngle(camForward, targetForward);
 
         Debug.Log(angle);
 
