@@ -6,6 +6,8 @@ using GameInput;
 public class Vehicle : MonoBehaviour, IControllable, IInteractable
 {
     [SerializeField] protected float _maxTorque;
+    [SerializeField] protected float _maxBrake;
+    [SerializeField] protected float _maxSpeed;
     [SerializeField] protected float _maxSteerAngle;
     [SerializeField] protected Axle[] _axles;
     [SerializeField] protected Rigidbody _rigidbody;
@@ -31,6 +33,7 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
     private Vector3 _activeWheelPos;
     private Quaternion _activeWheelRot;
     private float _currentSpeed;
+    private float _directionSign;
 
     public float CurrentSpeed { get { return _currentSpeed; } }
     public Transform DriverSeat { get { return _seats[0]; } }
@@ -75,7 +78,22 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
         float reverseMotor = _maxTorque * _reverseThrottle;
         float deltaMotor = forwardMotor - reverseMotor;
 
+        float braking = 0f;
         float steering = _maxSteerAngle * _steerValue;
+
+        _currentSpeed = _rigidbody.velocity.magnitude;
+        if (_currentSpeed < 0.01f)
+        {
+            _currentSpeed = 0f;
+        }
+
+        // cap speed
+        if (_currentSpeed > _maxSpeed)
+        {
+            deltaMotor = 0f;
+        }
+
+        _directionSign = Mathf.Sign(Vector3.Dot(transform.forward, _rigidbody.velocity));
 
         // apply forces to wheels
         for (int i = 0; i < _axles.Length; ++i)
@@ -93,11 +111,26 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
                 _currentAxle.RightWheelCollider.motorTorque = deltaMotor;
             }
 
+            if ((forwardMotor > 0f && _currentSpeed * _directionSign < 0f) || (reverseMotor > 0f && _currentSpeed * _directionSign > 0f))
+            {
+                // trying to switch directions (forward/reverse)
+                braking = _maxBrake;
+            }
+
+            _currentAxle.LeftWheelCollider.brakeTorque = braking;
+            _currentAxle.RightWheelCollider.brakeTorque = braking;
+
             // reflect wheel collider movement onto visual wheels
             ApplyPositionToVisuals(_currentAxle);
         }
+    }
 
-        _currentSpeed = _rigidbody.velocity.magnitude;
+    private void OnGUI()
+    {
+        if (_driver != null)
+        {
+            GUI.Label(new Rect(10, 10, 200, 30), "speed: " + _currentSpeed);
+        }
     }
 
     private void ApplyPositionToVisuals(Axle current)
@@ -115,12 +148,12 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
     {
         WheelFrictionCurve curve = _axles[0].LeftWheelCollider.sidewaysFriction;
         curve.stiffness = value;
-        for (int i = 0; i < _axles.Length; ++i)
-        {
+        //for (int i = 0; i < _axles.Length; ++i)
+        //{
             _currentAxle = _axles[1]; // just back wheels for now
             _currentAxle.LeftWheelCollider.sidewaysFriction = curve;
             _currentAxle.RightWheelCollider.sidewaysFriction = curve;
-        }
+        //}
     }
 
     #region IInteractable
@@ -217,6 +250,14 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
         {
             // drift
             ChangeSidewaysWheelFriction(_driftWheelFriction);
+        }
+        else if (b == Button.RStick)
+        {
+            // camera recenter
+            if (_driver != null)
+            {
+                _driver.HandleButtonPress(b);
+            }
         }
     }
 

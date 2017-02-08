@@ -56,7 +56,7 @@ public class ThirdPersonCamera : MonoBehaviour
         _currentY = 0f;
 
         UpdateFollowOffset();
-
+        
         _freeCam = false;
     }
 
@@ -64,8 +64,6 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         Vector3 adjustedCamForward = Vector3.ProjectOnPlane(_camTransform.forward, _target.up);
         float angle = Utils.GetSignedAngle(adjustedCamForward, _target.forward);
-
-        Debug.Log(angle);
 
         _defaultOffset = Quaternion.Euler(0f, angle, 0f) * _defaultOffset;
     }
