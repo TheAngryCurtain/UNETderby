@@ -24,4 +24,10 @@ public class Utils
 
         return angle;
     }
+
+    public static float GetImpactForce(float mass, float velocity)
+    {
+        float t = 1f;
+        return (2f * mass * velocity) / t;
+    }
 }

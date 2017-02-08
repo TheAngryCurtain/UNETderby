@@ -17,13 +17,15 @@ public class CharacterState
     }
 }
 
-public abstract class Character : MonoBehaviour, IControllable
+public abstract class Character : MonoBehaviour, IControllable, IDamagable
 {
     [SerializeField] protected float _walkSpeed;
     [SerializeField] protected float _runSpeed;
 
     [SerializeField] protected Rigidbody _rigidbody;
     [SerializeField] protected Collider _bodyCollider;
+
+    [SerializeField] protected Health _health;
 
     protected float _currentSpeed;
     protected CharacterState _state;
@@ -91,5 +93,15 @@ public abstract class Character : MonoBehaviour, IControllable
     public virtual void HandleButtonRelease(Button b)
     {
         //throw new NotImplementedException();
+    }
+
+    public void AffectHealth(int amount)
+    {
+        _health.AffectHealth(amount);
+    }
+
+    public bool IsDefeated()
+    {
+        return _health.IsDefeated;
     }
 }

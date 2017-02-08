@@ -34,6 +34,9 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
     private Quaternion _activeWheelRot;
     private float _currentSpeed;
     private float _directionSign;
+    private float _deltaMotorForce;
+    private float _currentMaxSteerAngle;
+    private float _currentSteerAngle;
 
     public float CurrentSpeed { get { return _currentSpeed; } }
     public Transform DriverSeat { get { return _seats[0]; } }
@@ -76,10 +79,9 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
     {
         float forwardMotor = _maxTorque * _fowardThrottle;
         float reverseMotor = _maxTorque * _reverseThrottle;
-        float deltaMotor = forwardMotor - reverseMotor;
+        _deltaMotorForce = forwardMotor - reverseMotor;
 
         float braking = 0f;
-        float steering = _maxSteerAngle * _steerValue;
 
         _currentSpeed = _rigidbody.velocity.magnitude;
         if (_currentSpeed < 0.01f)
@@ -90,8 +92,12 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
         // cap speed
         if (_currentSpeed > _maxSpeed)
         {
-            deltaMotor = 0f;
+            _deltaMotorForce = 0f;
         }
+
+        // adjust max steering over time
+        _currentMaxSteerAngle = _maxSteerAngle - _currentSpeed;
+        _currentSteerAngle = _currentMaxSteerAngle * _steerValue;
 
         _directionSign = Mathf.Sign(Vector3.Dot(transform.forward, _rigidbody.velocity));
 
@@ -101,14 +107,14 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
             _currentAxle = _axles[i];
             if (_currentAxle.Steer)
             {
-                _currentAxle.LeftWheelCollider.steerAngle = steering;
-                _currentAxle.RightWheelCollider.steerAngle = steering;
+                _currentAxle.LeftWheelCollider.steerAngle = _currentSteerAngle;
+                _currentAxle.RightWheelCollider.steerAngle = _currentSteerAngle;
             }
 
             if (_currentAxle.Motor)
             {
-                _currentAxle.LeftWheelCollider.motorTorque = deltaMotor;
-                _currentAxle.RightWheelCollider.motorTorque = deltaMotor;
+                _currentAxle.LeftWheelCollider.motorTorque = _deltaMotorForce;
+                _currentAxle.RightWheelCollider.motorTorque = _deltaMotorForce;
             }
 
             if ((forwardMotor > 0f && _currentSpeed * _directionSign < 0f) || (reverseMotor > 0f && _currentSpeed * _directionSign > 0f))
@@ -130,6 +136,8 @@ public class Vehicle : MonoBehaviour, IControllable, IInteractable
         if (_driver != null)
         {
             GUI.Label(new Rect(10, 10, 200, 30), "speed: " + _currentSpeed);
+            GUI.Label(new Rect(10, 30, 200, 30), "delta: " + _deltaMotorForce);
+            GUI.Label(new Rect(10, 60, 200, 30), "max steering: " + _currentSteerAngle);
         }
     }
 

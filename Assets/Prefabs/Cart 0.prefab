@@ -365,6 +365,8 @@ GameObject:
   - 4: {fileID: 431848}
   - 54: {fileID: 5499576}
   - 114: {fileID: 11491990}
+  - 114: {fileID: 11440294}
+  - 114: {fileID: 11464166}
   m_Layer: 9
   m_Name: Cart 0
   m_TagString: Untagged
@@ -1098,6 +1100,18 @@ MonoBehaviour:
   _actionLocation: {fileID: 403532}
   _activeSeat: {fileID: 486786}
   _isDriverDoor: 1
+--- !u!114 &11440294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc4b5c0910a8e3418a245daa60ca930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _max: 300
 --- !u!114 &11441404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1130,6 +1144,20 @@ MonoBehaviour:
   _actionLocation: {fileID: 478698}
   _activeSeat: {fileID: 486786}
   _isDriverDoor: 1
+--- !u!114 &11464166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be704da6058cdc46a07019dec89c45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 11440294}
+  _vehicle: {fileID: 11491990}
+  _rigidbody: {fileID: 5499576}
 --- !u!114 &11491990
 MonoBehaviour:
   m_ObjectHideFlags: 1

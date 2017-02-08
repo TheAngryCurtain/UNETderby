@@ -107,6 +107,7 @@ GameObject:
   - 136: {fileID: 13623620}
   - 54: {fileID: 5409566}
   - 114: {fileID: 11445128}
+  - 114: {fileID: 11482438}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -578,7 +579,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.071, y: 1, z: 0}
+  m_LocalPosition: {x: 1.23, y: 1, z: -32.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1207,7 +1208,20 @@ MonoBehaviour:
   _runSpeed: 12
   _rigidbody: {fileID: 5409566}
   _bodyCollider: {fileID: 13623620}
+  _health: {fileID: 11482438}
   _camera: {fileID: 0}
+--- !u!114 &11482438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc4b5c0910a8e3418a245daa60ca930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _max: 100
 --- !u!136 &13623620
 CapsuleCollider:
   m_ObjectHideFlags: 1
