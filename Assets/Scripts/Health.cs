@@ -4,6 +4,7 @@ using System.Collections;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int _max;
+    [SerializeField] private bool _invulnerable;
 
     private int _current;
 
@@ -16,6 +17,8 @@ public class Health : MonoBehaviour
 
     public void AffectHealth(int amount)
     {
+        if (_invulnerable) return;
+
         _current += amount;
         if (_current < 0)
         {

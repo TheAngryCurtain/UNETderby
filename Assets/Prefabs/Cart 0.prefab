@@ -367,6 +367,8 @@ GameObject:
   - 114: {fileID: 11491990}
   - 114: {fileID: 11440294}
   - 114: {fileID: 11464166}
+  - 114: {fileID: 11419250}
+  - 135: {fileID: 13592666}
   m_Layer: 9
   m_Name: Cart 0
   m_TagString: Untagged
@@ -1100,6 +1102,21 @@ MonoBehaviour:
   _actionLocation: {fileID: 403532}
   _activeSeat: {fileID: 486786}
   _isDriverDoor: 1
+--- !u!114 &11419250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cced274a52b7b409d37c1b9edea2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 5499576}
+  _preCollisionTrigger: {fileID: 13592666}
+  _colZone: {fileID: 11464166}
+  _health: {fileID: 11440294}
 --- !u!114 &11440294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1112,6 +1129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _max: 300
+  _invulnerable: 0
 --- !u!114 &11441404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1155,9 +1173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be704da6058cdc46a07019dec89c45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 11440294}
-  _vehicle: {fileID: 11491990}
-  _rigidbody: {fileID: 5499576}
+  _frontZone: 0
+  _sideZone: 1
+  _backZone: 2
 --- !u!114 &11491990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1191,6 +1209,18 @@ MonoBehaviour:
   - {fileID: 486786}
   _centerOfMass: {fileID: 461908}
   _driftWheelFriction: 1.25
+--- !u!135 &13592666
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!146 &14603492
 WheelCollider:
   m_ObjectHideFlags: 1
